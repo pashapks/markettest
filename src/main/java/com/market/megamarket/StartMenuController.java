@@ -12,6 +12,9 @@ import javafx.stage.Stage;
 
 public class StartMenuController {
     @FXML
+    public Button closeButton;
+
+    @FXML
     private CheckBox agreeCheck;
 
     @FXML
@@ -21,13 +24,7 @@ public class StartMenuController {
     private Button yesButton;
 
     @FXML
-    private Button closeButton;
-
-    @FXML
     private AnchorPane onNoPane;
-
-
-
 
     public void switchToShopScene() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("productList.fxml"));
