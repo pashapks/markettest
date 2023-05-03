@@ -29,14 +29,14 @@ public class PostgreSQLHandler {
         return name;
     }
     public Double getPriceById(int id) throws SQLException {
-        Double price = 0.0;
+        double price = 0.0;
         try (Connection con = DriverManager.getConnection(url, user, password)) {
             String sql = "SELECT price FROM products WHERE shtrih = ?";
             try (PreparedStatement stmt = con.prepareStatement(sql)) {
                 stmt.setInt(1, id);
                 try (ResultSet rs = stmt.executeQuery()) {
                     if (rs.next()) {
-                        price = Double.valueOf(rs.getString("price"));
+                        price = Double.parseDouble(rs.getString("price"));
                     }
                 }
             }

@@ -12,32 +12,29 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Item {
-    private static ArrayList<Item> items = new ArrayList<>();
+    private static final ArrayList<Item> items = new ArrayList<>();
     private static int itemCount = 0;
-    private Integer id;
-    private String name;
+    private final String name;
     private int quantity = 1;
-    private static int totalQuantity;
-    private double price;
+    private final double price;
     private int number;
-    private static Double totalPrice = 0.0;
     private static Label totalPriceLabel;
     private static Label totalQuantityLabel;
     String url = "jdbc:postgresql://localhost:5432/dbtest";
     String user = "postgres";
     String password = "root";
     PostgreSQLHandler handler = new PostgreSQLHandler(url, user, password);
-    private Label nameLabel = new Label();
-    private Label quantityLabel = new Label();
-    private Label priceLabel = new Label();
-    private Button decreaseButton = new Button("-");
-    private Button increaseButton = new Button("+");
-    private Button removeButton = new Button("X");
+    private final Label nameLabel = new Label();
+    private final Label quantityLabel = new Label();
+    private final Label priceLabel = new Label();
+    private final Button decreaseButton = new Button("-");
+    private final Button increaseButton = new Button("+");
+    private final Button removeButton = new Button("X");
 
     public Item(String id, VBox itemsBox) throws SQLException {
-        this.id = Integer.valueOf(id);
-        this.name = handler.getNameById(this.id);
-        this.price = handler.getPriceById(this.id);
+        int id1 = Integer.parseInt(id);
+        this.name = handler.getNameById(id1);
+        this.price = handler.getPriceById(id1);
         nameLabel.setText(number + ". " + name);
         nameLabel.setPrefSize(190, 25);
         quantityLabel.setText(quantity + " шт");
@@ -89,15 +86,14 @@ public class Item {
     }
 
     public static void updateItems() {
-        totalPrice = 0.0;
-        totalQuantity = 0;
+        double totalPrice = 0.0;
+        int totalQuantity = 0;
         for (int i = 0; i < items.size(); i++) {
             Item item = items.get(i);
             item.setNumber(i + 1);
             totalPrice += items.get(i).quantity * items.get(i).price;
             totalQuantity += items.get(i).quantity;
         }
-        System.out.println(totalPrice);
         totalPriceLabel.setText(totalPrice + " руб");
         totalQuantityLabel.setText(totalQuantity + " шт");
     }
