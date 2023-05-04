@@ -27,7 +27,7 @@ public class StartMenuController {
     private AnchorPane onNoPane;
 
     public void switchToShopScene() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("productList.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("productList.fxml"));
         Stage stage = (Stage) yesButton.getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load(), 420, 660);
         stage.setScene(scene);

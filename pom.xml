@@ -26,9 +26,6 @@
             <version>19</version>
         </dependency>
 
-
-
-
         <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -70,7 +67,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.market.megamarket/com.market.megamarket.HelloApplication</mainClass>
+                            <mainClass>com.market.megamarket/com.market.megamarket.Application</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
